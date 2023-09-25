@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+    
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    build: ./requirements/mariadb
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    networks:
+      - incept_net
+    volumes:
+      - mariadb_volume:/var/lib/mysql
+    restart: unless-stopped
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    build: ./requirements/wordpress
+    ports:
+      - 9000:9000
+    env_file: 
+      - .env
+    networks:
+      - incept_net
+    volumes:
+      - wp_volume:/var/www/html
+    depends_on:
+      - mariadb
+    restart: unless-stopped
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    build: ./requirements/nginx
+    ports:
+      - 443:443
+    env_file: 
+    - .env
+    networks:
+      - incept_net
+    volumes:
+      - wp_volume:/var/www/html
+    depends_on:
+      - wordpress
+    restart: unless-stopped
+
+networks:
+  incept_net:
+    name: incept_net
+    driver: bridge
+
+volumes:
+  mariadb_volume:
+    name: mariadb_volume
+    driver: local
+    driver_opts:
+      device: "/home/bjimenez/data/mariadb_volume"
+      o: bind
+      type: none
+    external: false
+  wp_volume:
+    name: wp_volume
+    driver: local
+    driver_opts:
+      device: "/home/bjimenez/data/wp_volume"
+      o: bind
+      type: none
+    external: false
