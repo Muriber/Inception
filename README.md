@@ -13,4 +13,4 @@ En resumen, se desarrolará:
 Todo este sistema se implementará mediante el Docker-Compose, reiniciándose en caso de fallo.
 
 El diagrama de bloques de la implementación se corresponderiá con el siguiente:
-<span>![</span><span>Diagrama de bloques contenedores</span><span>]</span><span>(</span><span>https://raw.githubusercontent.com/Muriber/Inception/master/img/esquema.png</span><span>)</span>
+<span>![</span><span>Diagrama de bloques contenedores</span><span>]</span><span>(</span><span>https://github.com/Muriber/Inception/blob/master/img/esquema.png</span><span>)</span>
