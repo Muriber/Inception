@@ -1,4 +1,4 @@
-#INCEPTION#
+# INCEPTION #
 Este proyecto expande tu conocimiento en la administración de sistemas con Docker. Consiste en virtualizar varias imágenes de Docker, creándolas en una máquina virtual personal.
 Para el desarrollo del sistema se usará Docker-Compose.
 Para ello, es necesario implementar de forma individual para cada uno de los servicios su propio Dockerfiles. En el caso de este proyecto, cada Dockerfiles será llamado por el docker-compose.yml, y este a su vez por el Makefile.
